@@ -27,7 +27,7 @@ Kasus penggunaan umum untuk `??` adalah memberikan nilai default untuk variabel 
 Misalnya, di sini kami menampilkan `pengguna` jika didefinisikan, jika tidak `Anonim`:
 
 ```js dijalankan
-biarkan pengguna;
+let pengguna;
 
 alert(pengguna ?? "Anonim"); // Anonim (pengguna tidak ditentukan)
 ```
@@ -35,7 +35,7 @@ alert(pengguna ?? "Anonim"); // Anonim (pengguna tidak ditentukan)
 Berikut ini contoh dengan `pengguna` ditetapkan ke sebuah nama:
 
 ```js dijalankan
-biarkan pengguna = "John";
+let pengguna = "John";
 
 alert(pengguna ?? "Anonim"); // John (ditentukan pengguna)
 ```
@@ -49,13 +49,13 @@ Kami ingin menampilkan nama pengguna menggunakan salah satu variabel ini, atau m
 Mari kita gunakan operator `??` untuk itu:
 
 ```js dijalankan
-biarkan namadepan = null;
-biarkan namabelakang = null;
-biarkan nickName = "Supercoder";
+let namadepan = null;
+let namabelakang = null;
+let nickName = "Supercoder";
 
 // menunjukkan nilai yang ditentukan pertama:
 *!*
-alert(FirstName ?? LastName ?? nickName ?? "Anonim"); // kode super
+alert(FirstName ?? LastName ?? nickName ?? "Anonim"); // Supercoder
 */!*
 ```
 
@@ -66,13 +66,13 @@ Operator OR `||` dapat digunakan dengan cara yang sama seperti `??`, seperti yan
 Misalnya, pada kode di atas kita dapat mengganti `??` dengan `||` dan tetap mendapatkan hasil yang sama:
 
 ```js dijalankan
-biarkan namadepan = null;
-biarkan namabelakang = null;
-biarkan nickName = "Supercoder";
+let namadepan = null;
+let namabelakang = null;
+let nickName = "Supercoder";
 
 // menunjukkan nilai kebenaran pertama:
 *!*
-alert(Namadepan || Nama Belakang || Nama Panggilan || "Anonim"); // kode super
+alert(Namadepan || Nama Belakang || Nama Panggilan || "Anonim"); // Supercoder
 */!*
 ```
 
@@ -91,10 +91,10 @@ Namun dalam praktiknya, kita mungkin ingin menggunakan nilai default hanya jika 
 Misalnya, pertimbangkan ini:
 
 ```js dijalankan
-misalkan tinggi = 0;
+const tinggi = 0;
 
-waspada(tinggi || 100); // 100
-waspada (tinggi ?? 100); // 0
+alert(tinggi || 100); // 100
+alert (tinggi ?? 100); // 0
 ```
 
 - `tinggi || 100` memeriksa `height` sebagai nilai yang salah, dan itu adalah `0`, memang salah.
@@ -113,23 +113,23 @@ Artinya, seperti halnya `||`, operator penggabungan nullish `??` dievaluasi sebe
 Jadi, jika kita ingin memilih nilai dengan `??` dalam ekspresi dengan operator lain, pertimbangkan untuk menambahkan tanda kurung:
 
 ```js dijalankan
-biarkan tinggi = nol;
-biarkan lebar = nol;
+let tinggi = null;
+let lebar = null;
 
 // penting: gunakan tanda kurung
-biarkan luas = (tinggi ?? 100) * (lebar ?? 50);
+let luas = (tinggi ?? 100) * (lebar ?? 50);
 
-waspada (daerah); // 5000
+alert (luas); // 5000
 ```
 
 Jika tidak, jika kita menghilangkan tanda kurung, maka karena `*` memiliki prioritas yang lebih tinggi daripada `??`, tanda kurung akan dieksekusi terlebih dahulu, sehingga menghasilkan hasil yang salah.
 
 ```js
 // tanpa tanda kurung
-misal luas = tinggi?? 100 * lebar ?? 50;
+const luas = tinggi?? 100 * lebar ?? 50;
 
 // ...berfungsi sama seperti ini (mungkin bukan yang kita inginkan):
-misal luas = tinggi?? (100 * lebar) ?? 50;
+const luas = tinggi?? (100 * lebar) ?? 50;
 ```
 
 ### Menggunakan ?? dengan && atau ||
@@ -139,7 +139,7 @@ Karena alasan keamanan, JavaScript melarang penggunaan `??` bersama dengan opera
 Kode di bawah ini memicu kesalahan sintaks:
 
 ```js dijalankan
-misalkan x = 1 && 2 ?? 3; // Kesalahan sintaks
+const x = 1 && 2 ?? 3; // Kesalahan sintaks
 ```
 
 Batasan ini tentu masih bisa diperdebatkan, hal itu ditambahkan ke spesifikasi bahasa dengan tujuan untuk menghindari kesalahan pemrograman, ketika orang mulai beralih dari `||` ke `??`.
@@ -148,10 +148,10 @@ Gunakan tanda kurung eksplisit untuk mengatasinya:
 
 ```js dijalankan
 *!*
-misalkan x = (1 && 2) ?? 3; // Bekerja
+const x = (1 && 2) ?? 3; // Bekerja
 */!*
 
-waspada(x); // 2
+alert(x); // 2
 ```
 
 ## Ringkasan
